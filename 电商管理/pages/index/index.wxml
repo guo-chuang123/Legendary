@@ -1,1 +1,39 @@
-<view>首页</view>
+<view class="cqg_index" hover-class="none" hover-stop-propagation="false">
+  <!-- 搜索框结束开始 -->
+  <SearchInput></SearchInput>
+  <!-- 搜索框结束结束 -->
+  <!-- 轮播图开始 -->
+  <view class="index_swper" hover-class="none" hover-stop-propagation="false">
+    <swiper class="" autoplay="{{true}}" interval="2000" circular="{{true}}" indicator-dots="{{true}}" indicator-color="#ddd" indicator-active-color="#002fa7">
+      <swiper-item class="" item-id="" wx:for="{{swiperList}}" wx:key="goods_id">
+        <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+          <image class="" src="{{item.image_src}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 轮播图结束 -->
+  <!-- 导航开始 -->
+  <view class="index_cate">
+    <navigator iamge class="" wx:for="{{castList}}" wx:key="name" target="" url="" open-type="navigate">
+      <image class="" src="{{item.image_src}}" mode="widthFix"></image>
+    </navigator>
+  </view>
+  <!-- 导航结束 -->
+  <!-- 楼层开始 -->
+  <view class="index_floor">
+    <view class="floor_group" wx:for="{{floorList}}" wx:for-item="item1" wx:for-index="index1" wx:key="floor_title">
+      <!-- 标题 -->
+      <view class="floor_title">
+        <image src="{{item1.floor_title.image_src}}" mode="widthFix"></image>
+      </view>
+      <!-- 内容 -->
+      <view class="floor_list" hover-class="none" hover-stop-propagation="false">
+        <navigator class="" url="" wx:for="{{item1.product_list}}" wx:key="name" wx:for-index="index2" wx:for-item="item2" open-type="navigate">
+          <image class="" src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" lazy-load="false"></image>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 楼层结束 -->
+</view>
