@@ -7,7 +7,7 @@
     "pages/cart/index",  
     "pages/collect/index",  
     "pages/order/index",  
-    "pages/search/index",  
+    "pages/search/index", 
     "pages/user/index",  
     "pages/feedback/index",  
     "pages/login/index",  
@@ -22,7 +22,7 @@
   },
   "tabBar": {
     "color": "#999",
-    "selectedColor": "#ff6700",
+    "selectedColor": "#002fa7",
     "backgroundColor": "",
     "position": "bottom",
     "borderStyle": "black",

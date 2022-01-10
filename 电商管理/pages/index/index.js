@@ -9,7 +9,7 @@ wx -
       swiperList: [],
       // 导航数组
       castList: [],
-      // 楼层数据
+      // 楼层数据 
       floorList:[]
     },
 
@@ -28,26 +28,26 @@ wx -
     getSwiperist() {
       // 使用封装的request方法，通过promise发起异步请求
       request({
-        url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
-      }).then((result) => {
-        this.setData({ swiperList: result.data.message })
+        url: '/home/swiperdata',
+      }).then((res) => {
+        this.setData({ swiperList: res })
       })
     },
     // 获取导航数组数据
     getCastList() {
       request({
-        url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/catitems',
-      }).then((result) => {
+        url: '/home/catitems',
+      }).then((res) => {
         this.setData({
-          castList: result.data.message,
+          castList: res
         })
       })
     },
     getFloorList() {
-      request({ url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata" }).then((result) => {
-        console.log(result.data.message)
+      request({ url: "/home/floordata" }).then((res) => {
+        console.log(res)
         this.setData({
-          floorList:result.data.message
+          floorList:res
         })
       })
     },

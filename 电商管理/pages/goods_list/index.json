@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "SearchInput":"../../components/SearchInput/SearchInput",
+    "Tabs":"../../components/Tsbs/Tabs" 
+  },
+  "navigationBarTitleText": "商品列表",
+
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark"
+
 }

@@ -11,10 +11,11 @@ Page({
     contentList: [],
     // 当前点击的分类
     currentIndex: 0,
+    scrollTop:0
   },
-  catesList: [],
+  catesList: [], 
 
-  // 点击切换分类
+  // 点击切换分类 
   handleTep(e) {
     let { index } = e.target.dataset
 
@@ -22,6 +23,7 @@ Page({
     this.setData({
       currentIndex: index,
       contentList,
+      scrollTop:0
     })
   },
   /**
@@ -35,19 +37,25 @@ Page({
       this.getCates()
     } else {
       if (Date.now() - Cates.time > 1000 * 10) {
+        // 本地数据已过期，重新发起请求
         this.getCates()
       } else {
-        console.log("123");
+        // 本地有数据，直接从本地和获取数据
+        this.catesList = Cates.data;
+        let MenuList = this.catesList.map((v) => v.cat_name)
+        let contentList = this.catesList[0].children
+        this.setData({
+          MenuList,
+          contentList,
+        })
       }
     }
     // 获取分类数据
   },
   // 获取分类数据
-  getCates() {
-    request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/categories',
-    }).then((result) => {
-      this.catesList = result.data.message
+  async getCates() {
+    const res = await request({url: '/categories'})
+      this.catesList = res
 
       // 把接口的数据存入本地存储
       wx.setStorageSync("cates", { time: Date.now(), data: this.catesList })
@@ -58,7 +66,7 @@ Page({
         MenuList,
         contentList,
       })
-    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
