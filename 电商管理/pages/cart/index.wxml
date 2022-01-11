@@ -1,2 +1,19 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- 收货地址 -->
+<view class="revice_address_row">
+  <!-- 收货地址不存在，显示按钮 -->
+  <view class="address_btn" wx:if="{{!address.userName}}">
+    <button type="primary" plain="{{true}}" bindtap="getChooseAddress">添加收货地址</button>
+  </view>
+  <!-- 收货地址存在，显示信息 -->
+  <view wx:else class="user_info_row" hover-class="none" hover-stop-propagation="false">
+    
+    <view class="user_info">
+      <view>收货人：{{address.userName}}</view>
+      <view>{{address.all}}</view>
+    </view>
+    <view class="user_phone">
+      <view>{{address.telNumber}}</view>
+    </view>
+  </view>
+</view>
+<!-- 购物车主体部分 -->

@@ -39,60 +39,30 @@ Page({
     wx.previewImage({
       current,
       urls,
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
     });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 点击加入购物车
+  handerCatAdd(e) {
+    // 获取缓存中的购物车数据
+    let cart = wx.getStorageSync('cart') || []
+    // 判断该商品是否在购物车中，不是返回-1
+    let index = cart.findIndex(item => item.goods_id === this.theGoods.goods_id)
+    if (index === -1) {
+      // 商品第一次添加
+      this.theGoods.num = 1
+      cart.push(this.theGoods)
+    } else {
+      // 已存在购物车，直接++
+      cart[index].num++
+    }
+    // 把购物车重新添加至缓存
+    wx.setStorageSync("cart", cart);
+    wx.showToast({
+      title: '添加成功',
+      icon: 'sucess',
+      mask: true,//防止手抖
+    });
+      
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

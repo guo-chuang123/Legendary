@@ -1,1 +1,21 @@
-/* pages/cart/index.wxss */
+.revice_address_row .address_btn {
+  padding: 20rpx;
+}
+.revice_address_row .address_btn button {
+  width: 60%;
+}
+.user_info_row {
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1rpx solid var(--themcolor);
+}
+.user_info_row .user_info {
+  flex: 5;
+}
+.user_info_row .user_info view:nth-child(1) {
+  padding-bottom: 4rpx;
+}
+.user_info_row .user_phone {
+  flex: 3;
+  text-align: right;
+}
