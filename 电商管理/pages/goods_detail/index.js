@@ -50,6 +50,7 @@ Page({
     if (index === -1) {
       // 商品第一次添加
       this.theGoods.num = 1
+      this.theGoods.checked = true
       cart.push(this.theGoods)
     } else {
       // 已存在购物车，直接++

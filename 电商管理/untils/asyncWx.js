@@ -36,3 +36,48 @@ export const openSetting = () => {
   })
 }
 
+export const showModal = ({content}) => {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: '提示',
+      content: content,
+      confirmColor: '#ff6700',
+      success: (result) => {
+        resolve(result)
+      },
+      fail: (err) => {
+        reject(err)
+      }
+    })
+  })
+}
+
+export const showToast = ({title}) => {
+  return new Promise((resolve, reject) => {
+    wx.showToast({
+      title: title,
+      icon: 'none',
+      mask: true,
+      success: (res) => {
+        resolve(res)
+      },
+      fail: (err) => {
+        reject(err)
+      }
+    })
+  })
+}
+export const login = () => {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      timeout:10000,
+      success: (res) => {
+        resolve(res)
+      },
+      fail: (err) => {
+        reject(err)
+      },
+      complete: () => {}
+    });
+  })
+}
