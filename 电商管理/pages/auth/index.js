@@ -1,5 +1,5 @@
 import { request } from '../../request/index.js'
-import { login } from '../../untils/asyncWx.js'
+import { login ,showToast} from '../../untils/asyncWx.js'
 Page({
   /**
    * 页面的初始数据
@@ -24,10 +24,13 @@ Page({
 
       // 把token存入缓存，并跳转回上一个界面
       wx.setStorageSync('token', token)
+      await showToast({title:"授权成功！"})
       wx.navigateBack({
         delta: 1,
       })
     } catch (error) {
+      await showToast({title:"授权失败，请稍后重试！"})
+
       console.log(error)
     }
   },

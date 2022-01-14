@@ -1,1 +1,99 @@
-/* pages/user/index.wxss */
+page {
+  background-color: #edece8;
+}
+.user_info_warp {
+  height: 45vh;
+  background-color: var(--themcolor);
+  overflow: hidden;
+  position: relative;
+}
+.user_info_warp .user_img_wrap {
+  position: relative;
+}
+.user_info_warp .user_img_wrap .user_bg {
+  height: 50vh;
+  filter: blur(10px);
+}
+.user_info_warp .user_img_wrap .user_info {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%);
+  text-align: center;
+}
+.user_info_warp .user_img_wrap .user_info .user_icon {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.user_info_warp .user_img_wrap .user_info .user_name {
+  color: #fff;
+  margin-top: 20rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.user_info_warp .user_btn {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%);
+  border: 1rpx solid #0ce917;
+  border-radius: 20rpx;
+  width: 50%;
+  padding: 30rpx;
+  color: #0ce917;
+  font-weight: bolder;
+  font-size: 40rpx;
+  text-align: center;
+  letter-spacing: 8rpx;
+}
+.user_content {
+  position: relative;
+}
+.user_content .user_main {
+  position: absolute;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%);
+  top: -30rpx;
+}
+.user_content .user_main .history_wrap {
+  background-color: #fff;
+  display: flex;
+}
+.user_content .user_main .history_wrap navigator {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+}
+.user_content .user_main .history_wrap navigator .his_num {
+  color: var(--themcolor);
+}
+.user_content .user_main .history_wrap navigator .his_name {
+  font-size: 25rpx;
+}
+.order_wrap {
+  background-color: #fff;
+  margin-top: 15rpx;
+}
+.order_wrap .order_title {
+  font-size: 35rpx;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.order_wrap .order_content {
+  display: flex;
+}
+.order_wrap .order_content navigator {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+}
+.order_wrap .order_content navigator .iconfont {
+  color: var(--themcolor);
+  font-size: 60rpx;
+}
+.order_wrap .order_content navigator .order_name {
+  padding-top: 10rpx;
+  font-size: 25rpx;
+}

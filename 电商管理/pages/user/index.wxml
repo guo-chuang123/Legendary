@@ -1,2 +1,60 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="user_info_warp">
+  <view wx:if="{{userInfo.avatarUrl}}" class="user_img_wrap">
+    <image class="user_bg" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+    <view class="user_info">
+      <image class="user_icon" src="{{userInfo.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+      <view class="user_name">{{userInfo.nickName}}</view>
+    </view>
+  </view>
+  <view wx:else class="user_btn">
+    <navigator class="" target="" url="/pages/login/index" hover-class="navigator-hover" open-type="navigate">登录</navigator>
+      
+  </view>
+</view>
+<view class="user_content">
+<view class="user_main">
+  <!-- 历史足迹 -->
+  <view class="history_wrap">
+    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <view class="his_num">0</view>
+      <view class="his_name">收藏的商铺</view>
+    </navigator>
+    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <view class="his_num">0</view>
+      <view class="his_name">收藏的商品</view>
+    </navigator>
+    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <view class="his_num">0</view>
+      <view class="his_name">关注的商品</view>
+    </navigator>
+    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <view class="his_num">0</view>
+      <view class="his_name">我的足迹</view>
+    </navigator>
+      
+  </view>
+  <!-- 我的订单 -->
+  <view class="order_wrap">
+    <view class="order_title">我的订单</view>
+    <view class="order_content">
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+       <view class=" iconfont icon-quanbudingdan"></view>
+      <view class="order_name">全部订单</view>
+      </navigator>
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+       <view class=" iconfont icon-daifukuan"></view>
+      <view class="order_name">待付款</view>
+      </navigator>
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+       <view class=" iconfont icon-receipt-address"></view>
+      <view class="order_name">待收货</view>
+      </navigator>
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+       <view class=" iconfont icon-tuihuo"></view>
+      <view class="order_name">退款/退货</view>
+      </navigator>
+        
+    </view>
+  </view>
+</view>
+</view>

@@ -1,4 +1,5 @@
-import { request} from '../../request/index.js'
+import { request } from '../../request/index.js'
+import { requestPayment, showToast } from '../../untils/asyncWx.js'
 Page({
   /**
    * 页面的初始数据
@@ -46,34 +47,73 @@ Page({
     })
   },
   async handelOrderPay() {
-    const token = wx.getStorageSync('token')
-    if (!token) {
-      wx.navigateTo({
-        url: '/pages/auth/index',
+    try {
+      const token = wx.getStorageSync('token')
+      if (!token) {
+        wx.navigateTo({
+          url: '/pages/auth/index',
+        })
+        return
+      }
+      // 创建订单
+      // 准备请求头参数
+      // const header = { Authorization: token }
+      // 准备请求体参数
+      const order_price = this.data.totalPrice
+      const consignee_addr = this.data.address.all
+      const goodsList = this.data.goodsList
+      let goods = []
+      goodsList.forEach((v) =>
+        goods.push({
+          goods_id: v.goods_id,
+          goods_number: v.num,
+          goods_price: v.goods_price,
+        })
+      )
+      const orderParams = { order_price, consignee_addr, goods }
+      // 发送请求，创建订单，获取订单编号
+      const { order_number } = await request({
+        url: '/my/orders/create',
+        method: 'post',
+        data: orderParams,
       })
-      return
+      console.log(order_number)
+      // 发起预支付
+      const { pay } = await request({
+        url: '/my/orders/req_unifiedorder',
+        method: 'POST',
+        data: { order_number },
+      })
+      console.log(pay)
+      // 发起微信小程序支付
+      // 由于不是企业号，无权限支付
+      await requestPayment(pay)
+      // 查看订单支付状态
+      const { payStatus } = await request({
+        url: '/my/orders/chkOrder',
+        method: 'POST',
+        data: { order_number },
+      })
+      await showToast({ title: '支付成功' })
+      this.DelStorageData()
+      console.log(payStatus)
+      wx.navigateTo({
+        url: '/pages/order/index',
+      })
+    } catch (error) {
+      await showToast({ title: '支付失败' })
+      this.DelStorageData()
+      console.log(error)
+      wx.navigateTo({
+        url: '/pages/order/index',
+      })
     }
-    // 创建订单
-    const header = { Authorization: token }
-    const order_price = this.data.totalPrice
-    const consignee_addr = this.data.address.all
-    const goodsList=this.data.goodsList
-    let goods = []
-    goodsList.forEach(v =>goods.push({
-      goos_id: v.goods_id,
-      goods_number: v.num,
-      goods_price:v.goods_price
-    }))
-    const orderParams = { order_price, consignee_addr, goods }
-    console.log(orderParams);
-    console.log(header);
-    const res = await request({
-      url: "/my/orders/create",
-      method: "post",
-      data: orderParams,
-      header
-    })
-    console.log(res);
+  },
+  // 手动删除缓存中的数据
+  DelStorageData() {
+    let goodsList = wx.getStorageSync('cart')
+    let newGoodsList = goodsList.filter((v) => !v.checked)
+    wx.setStorageSync('cart', newGoodsList)
   },
   /**
    * 生命周期函数--监听页面隐藏

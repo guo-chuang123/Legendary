@@ -1,6 +1,12 @@
 // 同时发送异步代码的次数
 let AjaxCont = 0
 export const request = (params) => {
+  // 判断url中是否带有/my/字段，请求为私有路径，应带上header token
+  let header = {...params.header}
+  if (params.url.includes("/my/")) {
+    // 拼接上token
+    header["Authorization"]=wx.getStorageInfoSync();
+  }
   // 显示加载中
   AjaxCont++
   wx.showLoading({
@@ -11,6 +17,7 @@ export const request = (params) => {
   return new Promise((resolve, reject) => {
     wx.request({
       ...params,
+      header,
       url:baseUrl+params.url,
       success: (result) => {
         resolve(result.data.message)
