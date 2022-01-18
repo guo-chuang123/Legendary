@@ -35,7 +35,18 @@ page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 38rpx;
   border-left: 1rpx solid #000;
+}
+.good_name_row .good_collect .icon-shoucang {
+  color: #ff6700;
+}
+.good_name_row .good_collect .collect_true {
+  font-size: 28rpx;
+  color: #ff6700;
+}
+.good_name_row .good_collect .collet_text {
+  font-size: 28rpx;
 }
 .good_info .good_info_title {
   font-size: 32rpx;

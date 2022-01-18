@@ -1,27 +1,27 @@
-page{
+page {
   padding-bottom: 90rpx;
 }
-.detail_swiper{
-  swiper{
+.detail_swiper {
+  swiper {
     height: 65vw;
     text-align: center;
-    image{
+    image {
       width: 60%;
     }
   }
 }
-.good_price{
+.good_price {
   padding: 15rpx;
   font-size: 32rpx;
   font-weight: bolder;
   color: #ff6700;
 }
-.good_name_row{
+.good_name_row {
   display: flex;
   // border-top: 5rpx solid #dedede;
   border-bottom: 5rpx solid #dedede;
   padding: 10rpx 0;
-  .good_name{
+  .good_name {
     flex: 5;
     color: #555;
     font-size: 30rpx;
@@ -32,28 +32,38 @@ page{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  .good_collect{
+  .good_collect {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 38rpx;
     border-left: 1rpx solid #000;
-    .iconfont{}
-    .collect_text{}
+    .icon-shoucang {
+      color: #ff6700;
+    }
+    .collect_true{
+      font-size: 28rpx;
+      color: #ff6700;
+    }
+    .collet_text {
+      font-size: 28rpx;
+    }
   }
 }
-.good_info{
-  .good_info_title{
+.good_info {
+  .good_info_title {
     font-size: 32rpx;
     color: var(--themcolor);
     font-weight: bolder;
     padding: 20rpx;
   }
-  .good_info_content{}
+  .good_info_content {
+  }
 }
 
-.btm_item{
+.btm_item {
   border-top: 1rpx solid #ccc;
   position: fixed;
   left: 0;
@@ -62,7 +72,7 @@ page{
   height: 90rpx;
   background-color: #fff;
   display: flex;
-  .tool_item{
+  .tool_item {
     flex: 1;
     display: flex;
     font-size: 20rpx;
@@ -70,7 +80,7 @@ page{
     justify-content: center;
     align-items: center;
     position: relative;
-    button{
+    button {
       position: absolute;
       top: 0;
       left: 0;
@@ -79,14 +89,14 @@ page{
       opacity: 0;
     }
   }
-  .btn_cart{
+  .btn_cart {
     flex: 2;
     background-color: #ffa500;
     color: #fff;
     font-size: 30rpx;
     font-weight: bold;
   }
-  .btn_buy{
+  .btn_buy {
     flex: 2;
     background-color: #eb4450;
     color: #fff;

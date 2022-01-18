@@ -19,8 +19,8 @@
       <view class="his_num">0</view>
       <view class="his_name">收藏的商铺</view>
     </navigator>
-    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
-      <view class="his_num">0</view>
+    <navigator class="" target="" url="/pages/collect/index" hover-class="navigator-hover" open-type="navigate">
+      <view class="his_num">{{collectNum}}</view>
       <view class="his_name">收藏的商品</view>
     </navigator>
     <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
@@ -37,15 +37,15 @@
   <view class="order_wrap">
     <view class="order_title">我的订单</view>
     <view class="order_content">
-      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <navigator class="" target="" url="/pages/order/index?type=1" hover-class="navigator-hover" open-type="navigate">
        <view class=" iconfont icon-quanbudingdan"></view>
       <view class="order_name">全部订单</view>
       </navigator>
-      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <navigator class="" target="" url="/pages/order/index?type=2" hover-class="navigator-hover" open-type="navigate">
        <view class=" iconfont icon-daifukuan"></view>
       <view class="order_name">待付款</view>
       </navigator>
-      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <navigator class="" target="" url="/pages/order/index?type=3" hover-class="navigator-hover" open-type="navigate">
        <view class=" iconfont icon-receipt-address"></view>
       <view class="order_name">待收货</view>
       </navigator>
@@ -55,6 +55,22 @@
       </navigator>
         
     </view>
+  </view>
+  <!-- 收货地址管理 -->
+  <view class="address_wrap">
+  收货地址管理
+  </view>
+  <!-- 应用信息相关 -->
+  <view class="app_info_wrap">
+    <view class="app_info_item content">
+      <text>联系客服</text>
+      <text>123-456-8888</text>
+    </view>
+    <navigator url="/pages/feedback/index" class="app_info_item">意见反馈</navigator>
+    <view class="app_info_item">关于我们</view>
+  </view>
+  <view class="recommend_wrap">
+    把应用推荐给其他人
   </view>
 </view>
 </view>

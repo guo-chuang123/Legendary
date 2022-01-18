@@ -5,7 +5,7 @@ export const request = (params) => {
   let header = {...params.header}
   if (params.url.includes("/my/")) {
     // 拼接上token
-    header["Authorization"]=wx.getStorageInfoSync();
+    header["Authorization"] = wx.getStorageSync("token");
   }
   // 显示加载中
   AjaxCont++

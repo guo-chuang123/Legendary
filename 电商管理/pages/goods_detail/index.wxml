@@ -16,9 +16,9 @@
 <view class="good_price">￥{{goodObj.goods_price}}</view>
 <view class="good_name_row">
   <view class="good_name">{{goodObj.goods_name}}</view>
-  <view class="good_collect">
-    <text class="iconfont icon-shoucangxiao"></text>
-    <view class="collet_text">收藏</view>
+  <view class="good_collect" bindtap="handelCollect">
+    <text class="iconfont {{isCollect?'icon-shoucang':'icon-shoucangxiao'}}"></text>
+    <view class="{{isCollect?'collect_true':'collet_text'}} ">收藏</view>
   </view>
 </view>
 <!-- 详情区域 -->

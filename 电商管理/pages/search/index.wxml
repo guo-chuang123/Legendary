@@ -1,2 +1,16 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<view class="search_main">
+  <view class="search_row">
+    <view class="search_for">
+      <input value="{{inputVal}}" type="text" bindinput="handleInput" focus="{{true}}" placeholder="请输入要搜索的内容" confirm-type="search"></input>
+    </view>
+    <button class="search_btn" bindtap="handelCacle" hidden="{{!isFocus}}">取消</button>
+  </view>
+  <view class="search_content" wx:for="{{goodsList}}" wx:key="goods_id">
+    <navigator class="search_item" url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
+      {{item.goods_name}}
+    </navigator>
+  </view>
+  <view class="" wx:if="{{isEmptyTitle}}" hover-class="none" hover-stop-propagation="false">
+    找不到该商品哦！试试其他商品吧！
+  </view>
+</view>

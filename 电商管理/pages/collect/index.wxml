@@ -1,2 +1,28 @@
-<!--pages/collect/index.wxml-->
-<text>pages/collect/index.wxml</text>
+<Tabs tabs="{{tabs}}" bindtabChange="handertabChange">
+  <view class="collect_main">
+    <view class="collect_title">
+      <text class="collect_tipes active">全部</text>
+      <text class="collect_tipes">正在热卖</text>
+      <text class="collect_tipes">即将上线</text>
+    </view>
+    <view class="collect_content">
+      <view class="first_tab" wx:for="{{collect}}" wx:key="goods_id">
+      <navigator class="" target="" url="/pages/goods_detail/index?goods_id={{item.goods_id}}" hover-class="navigator-hover" open-type="navigate">
+        <view class="goods_item">
+          <!-- 图片区域 -->
+        <view class="goods_img_wrap">
+          <image class="" src="{{item.goods_small_logo||'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" mode="widthFix" >
+            
+          </image>
+        </view>
+        <!-- 介绍区域 -->
+        <view class="goods_info_wrap">
+          <view class="goods_name">{{item.goods_name}}</view>
+          <view class="goods_price">￥{{item.goods_price}}</view>
+        </view>
+      </view>
+      </navigator>
+    </view>
+    </view>
+  </view>
+</Tabs>
